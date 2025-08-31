@@ -1,0 +1,10 @@
+gradio
+groq
+python-dotenv
+gtts
+speechrecognition
+pydub
+pillow
+requests
+elevenlabs==2.7.1
+pyaudio-fork

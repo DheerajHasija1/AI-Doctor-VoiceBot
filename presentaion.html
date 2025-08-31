@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Doctor with Vision and Voice - Project Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+        }
+        
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 30px;
+            box-shadow: 0 8px 16px rgba(255,107,107,0.3);
+            z-index: 2;
+        }
+        
+        .step-content {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+            position: relative;
+        }
+        
+        .step:nth-child(even) .step-content {
+            border-left: none;
+            border-right: 5px solid #e74c3c;
+        }
+        
+        .step-title {
+            color: #2c3e50;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step-description {
+            color: #555;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        
+        .arrow {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 25px solid #3498db;
+            bottom: -25px;
+            z-index: 1;
+        }
+        
+        .step:last-child .arrow {
+            display: none;
+        }
+        
+        .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .final-output {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 15px 30px rgba(46,204,113,0.3);
+        }
+        
+        .final-output h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .step {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin: 0 0 20px 0;
+            }
+            
+            .arrow {
+                left: 50%;
+                transform: translateX(-50%) rotate(90deg);
+                bottom: -15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 AI Doctor with Vision and Voice</h1>
+            <p>Complete Project Flow & Architecture</p>
+        </div>
+        
+        <div class="flow-container">
+            <!-- Step 1: User Input -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">🎤📸</span>
+                        User Input Collection
+                    </div>
+                    <div class="step-description">
+                        User provides voice input through microphone and uploads an image of their medical concern through Gradio interface.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Gradio UI</span>
+                        <span class="tech-tag">Audio Recording</span>
+                        <span class="tech-tag">Image Upload</span>
+                        <span class="tech-tag">speech_recognition</span>
+                        <span class="tech-tag">PyAudio</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 2: Audio Processing -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">🎵➡️📝</span>
+                        Speech-to-Text Conversion
+                    </div>
+                    <div class="step-description">
+                        Recorded audio is processed and converted to text using Groq's Whisper model for accurate transcription.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Groq API</span>
+                        <span class="tech-tag">Whisper-large-v3</span>
+                        <span class="tech-tag">pydub</span>
+                        <span class="tech-tag">Audio Processing</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 3: Image Processing -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">🖼️🔍</span>
+                        Image Analysis & Encoding
+                    </div>
+                    <div class="step-description">
+                        Medical image is encoded to base64 format and prepared for AI analysis along with the transcribed text query.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Base64 Encoding</span>
+                        <span class="tech-tag">Image Processing</span>
+                        <span class="tech-tag">Multi-modal Input</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 4: AI Analysis -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">🧠⚕️</span>
+                        AI Medical Analysis
+                    </div>
+                    <div class="step-description">
+                        Combined text query and image are processed by LLaMA-4 model to provide medical diagnosis and recommendations acting as a professional doctor.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LLaMA-4 Scout 17B</span>
+                        <span class="tech-tag">Groq Infrastructure</span>
+                        <span class="tech-tag">Vision-Language Model</span>
+                        <span class="tech-tag">Medical Prompting</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 5: Text-to-Speech -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">📝🎵</span>
+                        Voice Response Generation
+                    </div>
+                    <div class="step-description">
+                        AI doctor's text response is converted to natural speech using either Google TTS or ElevenLabs for high-quality voice output.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">gTTS (Google TTS)</span>
+                        <span class="tech-tag">ElevenLabs API</span>
+                        <span class="tech-tag">MP3 Generation</span>
+                        <span class="tech-tag">Audio Processing</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 6: Audio Playback -->
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">🔊▶️</span>
+                        Automatic Audio Playback
+                    </div>
+                    <div class="step-description">
+                        Generated audio automatically plays through system speakers with proper duration calculation for complete playback, plus manual controls in UI.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">subprocess</span>
+                        <span class="tech-tag">Platform Detection</span>
+                        <span class="tech-tag">Duration Calculation</span>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+            </div>
+            
+            <!-- Step 7: UI Output -->
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <div class="step-title">
+                        <span class="icon">💻📊</span>
+                        Complete UI Response
+                    </div>
+                    <div class="step-description">
+                        All outputs displayed in Gradio interface: transcribed text, doctor's diagnosis, and audio controls for repeat listening.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Gradio Interface</span>
+                        <span class="tech-tag">Multi-output Display</span>
+                        <span class="tech-tag">Audio Controls</span>
+                        <span class="tech-tag">Real-time Updates</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="final-output">
+            <h2>🎯 Final Output Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎤 Voice Input</h3>
+                    <p>Natural speech recording with ambient noise adjustment and configurable timeout settings</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👁️ Vision Analysis</h3>
+                    <p>Advanced image analysis for medical conditions using state-of-the-art vision-language models</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🩺 AI Doctor</h3>
+                    <p>Professional medical analysis with differential diagnosis and treatment recommendations</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔊 Voice Response</h3>
+                    <p>High-quality text-to-speech with automatic playback and manual controls for repeated listening</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🖥️ User-Friendly UI</h3>
+                    <p>Clean Gradio interface with real-time processing and comprehensive output display</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Fast Processing</h3>
+                    <p>Optimized pipeline with Groq's high-speed inference for quick medical consultations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
