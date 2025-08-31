@@ -27,16 +27,8 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Access at: http://localhost:7860
+<img width="446" height="284" alt="image" src="https://github.com/user-attachments/assets/3279a9d6-2a7e-4566-ab05-f87d28233db0" />
 
-## Flow Overview 📋
 
-1. Voice/Image Input → 2. Speech-to-Text → 3. Image Analysis → 
-4. AI Medical Processing → 5. Voice Response → 6. UI Display
 
-## Disclaimer ⚠️
-
-For preliminary consultation only. Not a replacement for professional medical advice.
-
----
 *Built with Groq & Gradio*
