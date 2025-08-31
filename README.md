@@ -29,6 +29,9 @@ python app.py
 
 <img width="446" height="284" alt="image" src="https://github.com/user-attachments/assets/3279a9d6-2a7e-4566-ab05-f87d28233db0" />
 
+<img width="1051" height="613" alt="image" src="https://github.com/user-attachments/assets/be618b26-f835-4bc8-9d3b-00f83ac8fcfb" />
+
+
 
 
 *Built with Groq & Gradio*
